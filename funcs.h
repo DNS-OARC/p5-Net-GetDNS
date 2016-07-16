@@ -42,30 +42,30 @@ getdns_return_t getdns_context_create_with_memory_functions( getdns_context ** c
 getdns_return_t getdns_context_create_with_extended_memory_functions( getdns_context **context, int set_from_os, void *userarg, void *(*malloc) (void *userarg, size_t), void *(*realloc) (void *userarg, void *, size_t), void (*free) (void *userarg, void *) );
 //void getdns_context_destroy(getdns_context *context);
 
-getdns_dict* getdns_context_get_api_information(getdns_context* context);
-getdns_return_t getdns_context_get_resolution_type(getdns_context *context, getdns_resolution_t* value);
+//getdns_dict* getdns_context_get_api_information(getdns_context* context);
+//getdns_return_t getdns_context_get_resolution_type(getdns_context *context, getdns_resolution_t* value);
 getdns_return_t getdns_context_get_namespaces(getdns_context *context, size_t* namespace_count, getdns_namespace_t **namespaces);
-getdns_return_t getdns_context_get_dns_transport(getdns_context *context, getdns_transport_t* value);
+//getdns_return_t getdns_context_get_dns_transport(getdns_context *context, getdns_transport_t* value);
 getdns_return_t getdns_context_get_dns_transport_list(getdns_context *context, size_t* transport_count, getdns_transport_list_t **transports);
-getdns_return_t getdns_context_get_limit_outstanding_queries(getdns_context *context, uint16_t* limit);
-getdns_return_t getdns_context_get_timeout(getdns_context *context, uint64_t* timeout);
-getdns_return_t getdns_context_get_idle_timeout(getdns_context *context, uint64_t* timeout);
-getdns_return_t getdns_context_get_follow_redirects(getdns_context *context, getdns_redirects_t* value);
-getdns_return_t getdns_context_get_dns_root_servers(getdns_context *context, getdns_list **addresses);
-getdns_return_t getdns_context_get_append_name(getdns_context *context, getdns_append_name_t* value);
-getdns_return_t getdns_context_get_suffix(getdns_context *context, getdns_list **value);
-getdns_return_t getdns_context_get_dnssec_trust_anchors(getdns_context *context, getdns_list **value);
-getdns_return_t getdns_context_get_dnssec_allowed_skew(getdns_context *context, uint32_t* value);
-getdns_return_t getdns_context_get_upstream_recursive_servers(getdns_context *context, getdns_list **upstream_list);
-getdns_return_t getdns_context_get_edns_maximum_udp_payload_size(getdns_context *context, uint16_t* value);
-getdns_return_t getdns_context_get_edns_extended_rcode(getdns_context *context, uint8_t* value);
-getdns_return_t getdns_context_get_edns_version(getdns_context *context, uint8_t* value);
-getdns_return_t getdns_context_get_edns_do_bit(getdns_context *context, uint8_t* value);
-getdns_return_t getdns_context_get_edns_client_subnet_private(getdns_context *context, uint8_t* value);
-getdns_return_t getdns_context_get_tls_query_padding_blocksize(getdns_context *context, uint16_t* value);
-getdns_return_t getdns_context_get_tls_authentication(getdns_context *context, getdns_tls_authentication_t* value);
+//getdns_return_t getdns_context_get_limit_outstanding_queries(getdns_context *context, uint16_t* limit);
+//getdns_return_t getdns_context_get_timeout(getdns_context *context, uint64_t* timeout);
+//getdns_return_t getdns_context_get_idle_timeout(getdns_context *context, uint64_t* timeout);
+//getdns_return_t getdns_context_get_follow_redirects(getdns_context *context, getdns_redirects_t* value);
+//getdns_return_t getdns_context_get_dns_root_servers(getdns_context *context, getdns_list **addresses);
+//getdns_return_t getdns_context_get_append_name(getdns_context *context, getdns_append_name_t* value);
+//getdns_return_t getdns_context_get_suffix(getdns_context *context, getdns_list **value);
+//getdns_return_t getdns_context_get_dnssec_trust_anchors(getdns_context *context, getdns_list **value);
+//getdns_return_t getdns_context_get_dnssec_allowed_skew(getdns_context *context, uint32_t* value);
+//getdns_return_t getdns_context_get_upstream_recursive_servers(getdns_context *context, getdns_list **upstream_list);
+//getdns_return_t getdns_context_get_edns_maximum_udp_payload_size(getdns_context *context, uint16_t* value);
+//getdns_return_t getdns_context_get_edns_extended_rcode(getdns_context *context, uint8_t* value);
+//getdns_return_t getdns_context_get_edns_version(getdns_context *context, uint8_t* value);
+//getdns_return_t getdns_context_get_edns_do_bit(getdns_context *context, uint8_t* value);
+//getdns_return_t getdns_context_get_edns_client_subnet_private(getdns_context *context, uint8_t* value);
+//getdns_return_t getdns_context_get_tls_query_padding_blocksize(getdns_context *context, uint16_t* value);
+//getdns_return_t getdns_context_get_tls_authentication(getdns_context *context, getdns_tls_authentication_t* value);
 getdns_return_t getdns_context_get_update_callback(getdns_context *context, void **userarg, void (**value) (getdns_context *, getdns_context_code_t, void *));
-uint32_t getdns_context_get_num_pending_requests(getdns_context* context, struct timeval* next_timeout);
+//uint32_t getdns_context_get_num_pending_requests(getdns_context* context, struct timeval* next_timeout);
 
 getdns_return_t getdns_context_set_context_update_callback( getdns_context *context, void (*value)(getdns_context *context, getdns_context_code_t changed_item) );
 getdns_return_t getdns_context_set_resolution_type(getdns_context *context, getdns_resolution_t value);
@@ -97,7 +97,7 @@ getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *c
 
 
 getdns_return_t getdns_general(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
-getdns_return_t getdns_address(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
+//getdns_return_t getdns_address(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
 getdns_return_t getdns_hostname(getdns_context *context, getdns_dict *address, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
 getdns_return_t getdns_service(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
 getdns_return_t getdns_cancel_callback(getdns_context *context, getdns_transaction_t transaction_id);
@@ -113,14 +113,14 @@ char *getdns_convert_ulabel_to_alabel(const char *ulabel);
 char *getdns_convert_alabel_to_ulabel(const char *alabel);
 getdns_return_t getdns_validate_dnssec(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors);
 getdns_list *getdns_root_trust_anchor(time_t *utc_date_of_anchor);
-char *getdns_pretty_print_dict(const getdns_dict *some_dict);
+//char *getdns_pretty_print_dict(const getdns_dict *some_dict);
 char *getdns_display_ip_address(const getdns_bindata *bindata_of_ipv4_or_ipv6_address);
 
 
 getdns_return_t getdns_context_set_eventloop(getdns_context* context, getdns_eventloop *eventloop);
 getdns_return_t getdns_context_get_eventloop(getdns_context* context, getdns_eventloop **eventloop);
 getdns_return_t getdns_context_detach_eventloop(getdns_context *context);
-void getdns_context_run(getdns_context *context);
+//void getdns_context_run(getdns_context *context);
 getdns_return_t getdns_context_process_async(getdns_context* context);
 
 

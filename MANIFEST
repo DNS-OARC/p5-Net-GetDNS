@@ -2,6 +2,8 @@ Changes
 
 lib/Net/GetDNS.pm
 
+compat_64bit.c
+compat_64bit.h
 getdns.xs
 getdns_bindata.xs
 getdns_context.xs
@@ -27,3 +29,4 @@ t/pod-coverage.t
 t/pod.t
 t/tidy.t
 t/basic.t
+t/query.t
