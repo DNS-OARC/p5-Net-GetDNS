@@ -1,0 +1,2 @@
+TYPEMAP
+Net::GetDNS::XS* T_PTROBJ

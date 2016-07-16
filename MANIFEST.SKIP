@@ -1,0 +1,10 @@
+.git
+debian
+.travis.yml
+tidy
+cover_db
+Makefile.old
+GetDNS.bs
+getdns.c
+getdns.o
+net_getdns.o
