@@ -5,6 +5,11 @@ perl:
   - "5.18"
   - "5.16"
   - "5.14"
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libunbound-dev libidn11-dev libssl-dev unbound-anchor build-essential
+  - curl https://getdnsapi.net/dist/getdns-1.0.0b2.tar.gz | tar zxf -
+  - ( cd getdns-1.0.0b2 && ./configure && sudo make install )
 install:
   - cpanm --quiet --installdeps --notest .
 script:
