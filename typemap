@@ -1,2 +1,10 @@
 TYPEMAP
 Net::GetDNS::XS* T_PTROBJ
+Net::GetDNS::XS::Context* T_PTROBJ
+Net::GetDNS::XS::Dict* T_PTROBJ
+Net::GetDNS::XS::List* T_PTROBJ
+Net::GetDNS::XS::Bindata* T_PTROBJ
+uint16_t T_U_SHORT
+uint32_t T_U_LONG
+getdns_return_t T_U_SHORT
+getdns_data_type T_U_SHORT

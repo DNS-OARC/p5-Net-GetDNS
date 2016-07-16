@@ -19,3 +19,7 @@ nytprof.out
 *.bs
 /_eumm/
 getdns.c
+getdns_bindata.c
+getdns_context.c
+getdns_dict.c
+getdns_list.c

@@ -4,12 +4,10 @@
 
 #include "ppport.h"
 
-typedef struct net_getdns_xs_object Net__GetDNS__XS;
+#include <getdns/getdns.h>
+#include <getdns/getdns_extra.h>
 
-struct net_getdns_xs_object {
-    void* handle;
-};
-
-Net__GetDNS__XS* net_getdns_xs_new(const char* class);
-
-void net_getdns_xs_DESTROY(Net__GetDNS__XS* object);
+typedef getdns_dict Net__GetDNS__XS__Dict;
+typedef getdns_context Net__GetDNS__XS__Context;
+typedef getdns_list Net__GetDNS__XS__List;
+typedef getdns_bindata Net__GetDNS__XS__Bindata;

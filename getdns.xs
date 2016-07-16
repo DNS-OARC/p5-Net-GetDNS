@@ -1,24 +1,29 @@
 #include "net_getdns.h"
 
-MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = net_getdns_xs_
+
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = getdns_
 
 PROTOTYPES: ENABLE
 
-Net::GetDNS::XS*
-net_getdns_xs_new(class)
-    const char* class
+const char *
+getdns_get_version()
+PROTOTYPE: DISABLE
+OUTPUT:
+    RETVAL
+
+const char *
+getdns_get_api_version()
+PROTOTYPE: DISABLE
+OUTPUT:
+    RETVAL
+
+const char *
+getdns_get_errorstr_by_id(err)
+    uint16_t err
 PROTOTYPE: $
 OUTPUT:
     RETVAL
 
-MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XSPtr  PREFIX = net_getdns_xs_
-
-PROTOTYPES: ENABLE
-
-void
-net_getdns_xs_DESTROY(object)
-    Net::GetDNS::XS* object
-PROTOTYPE: $
 
 MODULE = Net::GetDNS  PACKAGE = Net::GetDNS  PREFIX = crypt_pkcs11_
 
