@@ -3,6 +3,10 @@ Changes
 lib/Net/GetDNS.pm
 
 getdns.xs
+getdns_bindata.xs
+getdns_context.xs
+getdns_dict.xs
+getdns_list.xs
 net_getdns.c
 net_getdns.h
 ppport.h
@@ -22,3 +26,4 @@ t/perltidyrc
 t/pod-coverage.t
 t/pod.t
 t/tidy.t
+t/basic.t

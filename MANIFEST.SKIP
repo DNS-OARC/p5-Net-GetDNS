@@ -8,3 +8,14 @@ GetDNS.bs
 getdns.c
 getdns.o
 net_getdns.o
+flatten_h.sh
+funcs.h
+getdns_bindata.c
+getdns_bindata.o
+getdns_context.c
+getdns_context.o
+getdns_dict.c
+getdns_dict.o
+getdns_list.c
+getdns_list.o
+xs_left
