@@ -24,6 +24,31 @@ PROTOTYPE: $
 OUTPUT:
     RETVAL
 
+getdns_return_t
+getdns_address(context, name, extensions, userarg, transaction_id, callbackfn)
+    Net::GetDNS::XS::Context * context
+    const char * name
+    Net::GetDNS::XS::Dict * extensions
+    SV * userarg
+    getdns_transaction_t transaction_id
+    SV * callbackfn
+PROTOTYPE: $$$$$$
+CODE:
+    RETVAL = net_getdns_address(context, name, extensions, userarg, &transaction_id, callbackfn);
+OUTPUT:
+    transaction_id
+    RETVAL
+
+char *
+getdns_pretty_print_dict(some_dict)
+    Net::GetDNS::XS::Dict * some_dict
+PROTOTYPE: $
+
+void
+getdns_context_run(context)
+    Net::GetDNS::XS::Context * context
+PROTOTYPE: $
+
 
 MODULE = Net::GetDNS  PACKAGE = Net::GetDNS  PREFIX = crypt_pkcs11_
 

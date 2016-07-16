@@ -19,3 +19,4 @@ getdns_dict.o
 getdns_list.c
 getdns_list.o
 xs_left
+compat_64bit.o
