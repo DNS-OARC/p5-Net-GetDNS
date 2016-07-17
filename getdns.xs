@@ -1,5 +1,7 @@
 #include "net_getdns.h"
 
+#include <string.h>
+
 
 MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS
 
@@ -187,15 +189,69 @@ OUTPUT:
     response
     RETVAL
 
-char *
-getdns_pretty_print_dict(some_dict)
-    Net::GetDNS::XS::Dict * some_dict
-PROTOTYPE: $
+getdns_return_t
+getdns_convert_dns_name_to_fqdn(dns_name_wire_fmt, fqdn_as_string)
+    Net::GetDNS::XS::Bindata * dns_name_wire_fmt
+    char * fqdn_as_string = NO_INIT
+PROTOTYPE: $$
+CODE:
+    /* TODO: Free fqdn_as_string if set */
+    RETVAL = getdns_convert_dns_name_to_fqdn(dns_name_wire_fmt, &fqdn_as_string);
+OUTPUT:
+    fqdn_as_string
+    RETVAL
 
-void
-getdns_context_run(context)
-    Net::GetDNS::XS::Context * context
+getdns_return_t
+getdns_convert_fqdn_to_dns_name(fqdn_as_string, dns_name_wire_fmt)
+    const char * fqdn_as_string
+    Net::GetDNS::XS::Bindata * dns_name_wire_fmt = NO_INIT
+PROTOTYPE: $$
+CODE:
+    /* TODO: Free dns_name_wire_fmt if set */
+    RETVAL = getdns_convert_fqdn_to_dns_name(fqdn_as_string, &dns_name_wire_fmt);
+OUTPUT:
+    dns_name_wire_fmt
+    RETVAL
+
+char *
+getdns_convert_ulabel_to_alabel(ulabel)
+    const char * ulabel
 PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+char *
+getdns_convert_alabel_to_ulabel(alabel)
+    const char * alabel
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_validate_dnssec(to_validate, support_records, trust_anchors)
+    Net::GetDNS::XS::List * to_validate
+    Net::GetDNS::XS::List * support_records
+    Net::GetDNS::XS::List * trust_anchors
+PROTOTYPE: $$$
+OUTPUT:
+    RETVAL
+
+Net::GetDNS::XS::List *
+getdns_root_trust_anchor(utc_date_of_anchor)
+    time_t utc_date_of_anchor
+PROTOTYPE: $
+CODE:
+    RETVAL = getdns_root_trust_anchor(&utc_date_of_anchor);
+OUTPUT:
+    utc_date_of_anchor
+    RETVAL
+
+char *
+getdns_display_ip_address(bindata_of_ipv4_or_ipv6_address)
+    Net::GetDNS::XS::Bindata * bindata_of_ipv4_or_ipv6_address
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
 
 const char *
 getdns_get_version()
@@ -225,6 +281,48 @@ const char *
 getdns_get_errorstr_by_id(err)
     uint16_t err
 PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_strerror(err, str)
+    getdns_return_t err
+    SV * str
+PROTOTYPE: $$
+CODE:
+    char buf[4096];
+    SvGETMAGIC(str);
+    memset(buf, 0, sizeof(buf));
+    RETVAL = getdns_strerror(err, buf, sizeof(buf)-1);
+    sv_setpv_mg(str, buf);
+OUTPUT:
+    str
+    RETVAL
+
+getdns_return_t
+getdns_validate_dnssec2(to_validate, support_records, trust_anchors, validation_time, skew)
+    Net::GetDNS::XS::List * to_validate
+    Net::GetDNS::XS::List * support_records
+    Net::GetDNS::XS::List * trust_anchors
+    time_t validation_time
+    uint32_t skew
+PROTOTYPE: $$$$$
+OUTPUT:
+    RETVAL
+
+Net::GetDNS::XS::Dict *
+getdns_pubkey_pin_create_from_string(context, str)
+    Net::GetDNS::XS::Context * context
+    const char * str
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_pubkey_pinset_sanity_check(pinset, errorlist)
+    Net::GetDNS::XS::List * pinset
+    Net::GetDNS::XS::List * errorlist
+PROTOTYPE: $$
 OUTPUT:
     RETVAL
 

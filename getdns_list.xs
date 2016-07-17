@@ -149,6 +149,50 @@ CODE:
 OUTPUT:
     RETVAL
 
+char *
+getdns_pretty_print_list(some_list)
+    Net::GetDNS::XS::List * some_list
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+int
+getdns_pretty_snprint_list(str, list)
+    SV * str
+    Net::GetDNS::XS::List * list
+PROTOTYPE: $$
+CODE:
+    char buf[4096];
+    memset(buf, 0, sizeof(buf));
+    RETVAL = getdns_pretty_snprint_list(buf, sizeof(buf)-1, list);
+    sv_setpv_mg(str, buf);
+OUTPUT:
+    str
+    RETVAL
+
+char *
+getdns_print_json_list(some_list, pretty)
+    Net::GetDNS::XS::List * some_list
+    int pretty
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+int
+getdns_snprint_json_list(str, list, pretty)
+    SV * str
+    Net::GetDNS::XS::List * list
+    int pretty
+PROTOTYPE: $$
+CODE:
+    char buf[4096];
+    memset(buf, 0, sizeof(buf));
+    RETVAL = getdns_snprint_json_list(buf, sizeof(buf)-1, list, pretty);
+    sv_setpv_mg(str, buf);
+OUTPUT:
+    str
+    RETVAL
+
 
 MODULE = Net::GetDNS::XS::List  PACKAGE = Net::GetDNS::XS::List
 

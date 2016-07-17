@@ -252,7 +252,7 @@ OUTPUT:
 uint32_t
 getdns_context_get_num_pending_requests(context, next_timeout)
     Net::GetDNS::XS::Context * context
-    SV * next_timeout
+    SV * next_timeout = NO_INIT
 PROTOTYPE: $$
 CODE:
     struct timeval _next_timeout = { 0, 0 };
@@ -263,10 +263,197 @@ CODE:
 
 	length = snprintf(string, sizeof(string), "%lu.%lu", _next_timeout.tv_sec, _next_timeout.tv_usec);
 	if ( length > 0 || length < sizeof(string) ) {
+        /* TODO: Free next_timeout if set */
 	    next_timeout = newSVpv(string, length);
 	}
 OUTPUT:
     next_timeout
+    RETVAL
+
+getdns_return_t
+getdns_context_set_resolution_type(context, value)
+    Net::GetDNS::XS::Context * context
+    getdns_resolution_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_dns_transport(context, value)
+    Net::GetDNS::XS::Context * context
+    getdns_transport_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_idle_timeout(context, timeout)
+    Net::GetDNS::XS::Context * context
+    SV * timeout
+PROTOTYPE: $$
+CODE:
+    uint64_t _timeout = SvUInt64(timeout);
+    RETVAL = getdns_context_set_idle_timeout(context, _timeout);
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_limit_outstanding_queries(context, limit)
+    Net::GetDNS::XS::Context * context
+    uint16_t limit
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_timeout(context, timeout)
+    Net::GetDNS::XS::Context * context
+    SV * timeout
+PROTOTYPE: $$
+CODE:
+    uint64_t _timeout = SvUInt64(timeout);
+    RETVAL = getdns_context_set_timeout(context, _timeout);
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_follow_redirects(context, value)
+    Net::GetDNS::XS::Context * context
+    getdns_redirects_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_dns_root_servers(context, addresses)
+    Net::GetDNS::XS::Context * context
+    Net::GetDNS::XS::List * addresses
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_append_name(context, value)
+    Net::GetDNS::XS::Context * context
+    getdns_append_name_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_suffix(context, value)
+    Net::GetDNS::XS::Context * context
+    Net::GetDNS::XS::List * value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_dnssec_trust_anchors(context, value)
+    Net::GetDNS::XS::Context * context
+    Net::GetDNS::XS::List * value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_dnssec_allowed_skew(context, value)
+    Net::GetDNS::XS::Context * context
+    uint32_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_upstream_recursive_servers(context, upstream_list)
+    Net::GetDNS::XS::Context * context
+    Net::GetDNS::XS::List * upstream_list
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_edns_maximum_udp_payload_size(context, value)
+    Net::GetDNS::XS::Context * context
+    uint16_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_edns_extended_rcode(context, value)
+    Net::GetDNS::XS::Context * context
+    uint8_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_edns_version(context, value)
+    Net::GetDNS::XS::Context * context
+    uint8_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_edns_do_bit(context, value)
+    Net::GetDNS::XS::Context * context
+    uint8_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_return_dnssec_status(context, enabled)
+    Net::GetDNS::XS::Context * context
+    int enabled
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_use_threads(context, use_threads)
+    Net::GetDNS::XS::Context * context
+    int use_threads
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_tls_authentication(context, value)
+    Net::GetDNS::XS::Context * context
+    getdns_tls_authentication_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_edns_client_subnet_private(context, value)
+    Net::GetDNS::XS::Context * context
+    uint8_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_tls_query_padding_blocksize(context, value)
+    Net::GetDNS::XS::Context * context
+    uint16_t value
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+void
+getdns_context_run(context)
+    Net::GetDNS::XS::Context * context
+PROTOTYPE: $
+
+getdns_return_t
+getdns_context_process_async(context)
+    Net::GetDNS::XS::Context * context
+PROTOTYPE: $
+OUTPUT:
     RETVAL
 
 
