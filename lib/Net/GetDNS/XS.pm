@@ -150,7 +150,7 @@ BEGIN {
 
 Perl bindings for getdns, a modern asynchronous DNS API.
 
-=head1 METHODS
+=head1 FUNCTIONS
 
 Please see getdns API documentation for the following functions.
 
@@ -275,7 +275,7 @@ XSLoader::load( 'Net::GetDNS', $Net::GetDNS::VERSION );
 {
     my $libref = $DynaLoader::dl_librefs[ ( scalar @DynaLoader::dl_librefs - 1 ) ];
 
-    foreach my $module ( qw(Context Dict List Bindata) ) {
+    foreach my $module ( qw(Context Dict List Bindata Unimpl) ) {
         my ( $symref, $xs );
 
         unless ( ( $symref = DynaLoader::dl_find_symbol( $libref, 'boot_Net__GetDNS__XS__' . $module ) ) ) {
@@ -285,6 +285,53 @@ XSLoader::load( 'Net::GetDNS', $Net::GetDNS::VERSION );
         &$xs( 'Net::GetDNS::XS::' . $module );
     }
 }
+
+=head1 UNIMPLEMENTED
+
+These functions have yet been implemented.
+
+=over 4
+
+=item getdns_context_create_with_extended_memory_functions
+=item getdns_context_create_with_memory_functions
+=item getdns_context_detach_eventloop
+=item getdns_context_get_dns_transport_list
+=item getdns_context_get_eventloop
+=item getdns_context_get_namespaces
+=item getdns_context_get_update_callback
+=item getdns_context_set_context_update_callback
+=item getdns_context_set_dns_transport_list
+=item getdns_context_set_eventloop
+=item getdns_context_set_extended_memory_functions
+=item getdns_context_set_memory_functions
+=item getdns_context_set_namespaces
+=item getdns_context_set_update_callback
+=item getdns_dict_create_with_extended_memory_functions
+=item getdns_dict_create_with_memory_functions
+=item getdns_fp2rr_list
+=item getdns_list_create_with_extended_memory_functions
+=item getdns_list_create_with_memory_functions
+=item getdns_msg_dict2str
+=item getdns_msg_dict2str_buf
+=item getdns_msg_dict2str_scan
+=item getdns_msg_dict2wire
+=item getdns_msg_dict2wire_buf
+=item getdns_msg_dict2wire_scan
+=item getdns_rr_dict2str
+=item getdns_rr_dict2str_buf
+=item getdns_rr_dict2str_scan
+=item getdns_rr_dict2wire
+=item getdns_rr_dict2wire_buf
+=item getdns_rr_dict2wire_scan
+=item getdns_str2rr_dict
+=item getdns_wire2msg_dict
+=item getdns_wire2msg_dict_buf
+=item getdns_wire2msg_dict_scan
+=item getdns_wire2rr_dict
+=item getdns_wire2rr_dict_buf
+=item getdns_wire2rr_dict_scan
+
+=back
 
 =head1 AUTHOR
 
