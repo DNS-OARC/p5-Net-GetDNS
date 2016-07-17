@@ -12,7 +12,7 @@ sub have_inc($) {
 my @LIBS = ( '-lgetdns' );
 my @DEFINES;
 my %DL_FUNCS = (
-    'Net__GetDNS'              => ['boot_Net__GetDNS'],
+    'Net__GetDNS__XS'          => ['boot_Net__XS__GetDNS'],
     'Net__GetDNS__XS__Context' => ['boot_Net__GetDNS__XS__Context'],
     'Net__GetDNS__XS__Dict'    => ['boot_Net__GetDNS__XS__Dict'],
     'Net__GetDNS__XS__List'    => ['boot_Net__GetDNS__XS__List'],

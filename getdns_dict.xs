@@ -1,9 +1,7 @@
 #include "net_getdns.h"
 
-#include <stdio.h>
 
-
-MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = getdns_
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS
 
 PROTOTYPES: ENABLE
 
@@ -28,9 +26,10 @@ PROTOTYPE: $
 getdns_return_t
 getdns_dict_get_names(dict, answer)
     Net::GetDNS::XS::Dict * dict
-    Net::GetDNS::XS::List * answer
+    Net::GetDNS::XS::List * answer = NO_INIT
 PROTOTYPE: $$
 CODE:
+    /* TODO: Free answer if set */
     RETVAL = getdns_dict_get_names(dict, &answer);
 OUTPUT:
     answer
@@ -52,9 +51,10 @@ getdns_return_t
 getdns_dict_get_dict(dict, name, answer)
     Net::GetDNS::XS::Dict * dict
     char * name
-    Net::GetDNS::XS::Dict * answer
+    Net::GetDNS::XS::Dict * answer = NO_INIT
 PROTOTYPE: $$$
 CODE:
+    /* TODO: Free answer if set */
     RETVAL = getdns_dict_get_dict(dict, name, &answer);
 OUTPUT:
     answer
@@ -64,9 +64,10 @@ getdns_return_t
 getdns_dict_get_list(dict, name, answer)
     Net::GetDNS::XS::Dict * dict
     char * name
-    Net::GetDNS::XS::List * answer
+    Net::GetDNS::XS::List * answer = NO_INIT
 PROTOTYPE: $$$
 CODE:
+    /* TODO: Free answer if set */
     RETVAL = getdns_dict_get_list(dict, name, &answer);
 OUTPUT:
     answer

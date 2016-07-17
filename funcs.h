@@ -96,15 +96,15 @@ getdns_return_t getdns_context_set_edns_client_subnet_private(getdns_context *co
 getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *context, uint16_t value);
 
 
-getdns_return_t getdns_general(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
+//getdns_return_t getdns_general(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
 //getdns_return_t getdns_address(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
-getdns_return_t getdns_hostname(getdns_context *context, getdns_dict *address, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
-getdns_return_t getdns_service(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
-getdns_return_t getdns_cancel_callback(getdns_context *context, getdns_transaction_t transaction_id);
-getdns_return_t getdns_general_sync(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, getdns_dict **response);
-getdns_return_t getdns_address_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response);
-getdns_return_t getdns_hostname_sync(getdns_context *context, getdns_dict *address, getdns_dict *extensions, getdns_dict **response);
-getdns_return_t getdns_service_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response);
+//getdns_return_t getdns_hostname(getdns_context *context, getdns_dict *address, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
+//getdns_return_t getdns_service(getdns_context *context, const char *name, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
+//getdns_return_t getdns_cancel_callback(getdns_context *context, getdns_transaction_t transaction_id);
+//getdns_return_t getdns_general_sync(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, getdns_dict **response);
+//getdns_return_t getdns_address_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response);
+//getdns_return_t getdns_hostname_sync(getdns_context *context, getdns_dict *address, getdns_dict *extensions, getdns_dict **response);
+//getdns_return_t getdns_service_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response);
 
 
 getdns_return_t getdns_convert_dns_name_to_fqdn( const getdns_bindata *dns_name_wire_fmt, char **fqdn_as_string);
@@ -124,13 +124,13 @@ getdns_return_t getdns_context_detach_eventloop(getdns_context *context);
 getdns_return_t getdns_context_process_async(getdns_context* context);
 
 
-const char *getdns_get_version(void);
-uint32_t getdns_get_version_number(void);
-const char *getdns_get_api_version(void);
-uint32_t getdns_get_api_version_number(void);
+//const char *getdns_get_version(void);
+//uint32_t getdns_get_version_number(void);
+//const char *getdns_get_api_version(void);
+//uint32_t getdns_get_api_version_number(void);
 
 
-const char *getdns_get_errorstr_by_id(uint16_t err);
+//const char *getdns_get_errorstr_by_id(uint16_t err);
 getdns_return_t getdns_strerror(getdns_return_t err, char *buf, size_t buflen);
 
 

@@ -1,7 +1,7 @@
 #include "net_getdns.h"
 
 
-MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = getdns_
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS
 
 PROTOTYPES: ENABLE
 
@@ -50,9 +50,10 @@ getdns_return_t
 getdns_list_get_dict(list, index, answer)
     Net::GetDNS::XS::List * list
     size_t index
-    Net::GetDNS::XS::Dict * answer
+    Net::GetDNS::XS::Dict * answer = NO_INIT
 PROTOTYPE: $$$
 CODE:
+    /* TODO: Free answer if set */
     RETVAL = getdns_list_get_dict(list, index, &answer);
 OUTPUT:
     answer
@@ -62,9 +63,10 @@ getdns_return_t
 getdns_list_get_list(list, index, answer)
     Net::GetDNS::XS::List * list
     size_t index
-    Net::GetDNS::XS::List * answer
+    Net::GetDNS::XS::List * answer = NO_INIT
 PROTOTYPE: $$$
 CODE:
+    /* TODO: Free answer if set */
     RETVAL = getdns_list_get_list(list, index, &answer);
 OUTPUT:
     answer

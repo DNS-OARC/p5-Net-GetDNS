@@ -1,21 +1,23 @@
 #include "net_getdns.h"
 #include "compat_64bit.h"
 
+#include <stdio.h>
 
-MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = getdns_
+
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS
 
 PROTOTYPES: ENABLE
 
-Net::GetDNS::XS::Context *
-getdns_context_create(set_from_os)
+getdns_return_t
+getdns_context_create(context, set_from_os)
+    Net::GetDNS::XS::Context * context = NO_INIT
     int set_from_os
 PROTOTYPE: DISABLE
 CODE:
-    getdns_return_t r;
-    if ((r = getdns_context_create(&RETVAL, set_from_os))) {
-        croak(getdns_get_errorstr_by_id(r));
-    }
+    /* TODO: fail if context is set */
+    RETVAL = getdns_context_create(&context, set_from_os);
 OUTPUT:
+    context
     RETVAL
 
 void
@@ -103,9 +105,10 @@ OUTPUT:
 getdns_return_t
 getdns_context_get_dns_root_servers(context, addresses)
     Net::GetDNS::XS::Context * context
-    Net::GetDNS::XS::List * addresses
+    Net::GetDNS::XS::List * addresses = NO_INIT
 PROTOTYPE: $$
 CODE:
+    /* TODO: check that addresses is not set */
     RETVAL = getdns_context_get_dns_root_servers(context, &addresses);
 OUTPUT:
     addresses
@@ -125,9 +128,10 @@ OUTPUT:
 getdns_return_t
 getdns_context_get_suffix(context, value)
     Net::GetDNS::XS::Context * context
-    Net::GetDNS::XS::List * value
+    Net::GetDNS::XS::List * value = NO_INIT
 PROTOTYPE: $$
 CODE:
+    /* TODO: check that value is not set */
     RETVAL = getdns_context_get_suffix(context, &value);
 OUTPUT:
     value
@@ -136,9 +140,10 @@ OUTPUT:
 getdns_return_t
 getdns_context_get_dnssec_trust_anchors(context, value)
     Net::GetDNS::XS::Context * context
-    Net::GetDNS::XS::List * value
+    Net::GetDNS::XS::List * value = NO_INIT
 PROTOTYPE: $$
 CODE:
+    /* TODO: check that value is not set */
     RETVAL = getdns_context_get_dnssec_trust_anchors(context, &value);
 OUTPUT:
     value
@@ -158,9 +163,10 @@ OUTPUT:
 getdns_return_t
 getdns_context_get_upstream_recursive_servers(context, upstream_list)
     Net::GetDNS::XS::Context * context
-    Net::GetDNS::XS::List * upstream_list
+    Net::GetDNS::XS::List * upstream_list = NO_INIT
 PROTOTYPE: $$
 CODE:
+    /* TODO: check that upstream_list is not set */
     RETVAL = getdns_context_get_upstream_recursive_servers(context, &upstream_list);
 OUTPUT:
     upstream_list

@@ -33,47 +33,13 @@ Perl bindings for getdns, a modern asynchronous DNS API
 
 =cut
 
-use DynaLoader;
-require XSLoader;
-XSLoader::load( 'Net::GetDNS', $VERSION );
-{
-    my $libref = $DynaLoader::dl_librefs[ ( scalar @DynaLoader::dl_librefs - 1 ) ];
-
-    foreach my $module ( qw(Context Dict List Bindata) ) {
-        my ( $symref, $xs );
-
-        unless ( ( $symref = DynaLoader::dl_find_symbol( $libref, 'boot_Net__GetDNS__XS__' . $module ) ) ) {
-            confess 'Can not find symbol boot_Net__GetDNS__XS__' . $module;
-        }
-        $xs = DynaLoader::dl_install_xsub( 'Net::GetDNS::XS::' . $module . '::bootstrap', $symref );
-        &$xs( 'Net::GetDNS::XS::' . $module );
-    }
-}
-
 sub new {
     my $this  = shift;
     my $class = ref( $this ) || $this;
-    my $self  = {
-        xs => undef,
-    };
+    my $self  = {};
     bless $self, $class;
 
-    # uncoverable branch true
-    unless ( defined( $self->{xs} = Net::GetDNS::XS->new() ) ) {
-
-        # uncoverable statement
-        confess 'Unable to create Net::GetDNS::XS object';
-    }
-
     return $self;
-}
-
-=item XS
-
-=cut
-
-sub XS {
-    return $_[0]->{xs};
 }
 
 =back

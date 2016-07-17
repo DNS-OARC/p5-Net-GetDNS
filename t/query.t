@@ -2,34 +2,31 @@
 
 use Test::More;
 
-use Net::GetDNS;
+use Net::GetDNS::XS qw(:all);
 
-use Data::Dumper;
+my ( $ctx, $dict );
 
-my ( $ctx, $dict, $userarg, $transid );
-
-isa_ok( $ctx  = Net::GetDNS::XS::context_create( 1 ), 'Net::GetDNS::XS::ContextPtr' );
-isa_ok( $dict = Net::GetDNS::XS::dict_create,         'Net::GetDNS::XS::DictPtr' );
-$userarg = 123;
-$transid = 0;
+is( getdns_context_create( $ctx, 1 ), 0 );
+isa_ok( $ctx, 'Net::GetDNS::XS::ContextPtr' );
+isa_ok( $dict = getdns_dict_create, 'Net::GetDNS::XS::DictPtr' );
 
 is(
-    Net::GetDNS::XS::address(
+    getdns_address(
         $ctx,
         'example.com',
         $dict,
-        $userarg,
-        $transid,
+        undef,
+        undef,
         sub {
             my ( $ctx, $type, $resp, $userarg, $transid ) = @_;
 
             my $status = -1;
-            ok( !Net::GetDNS::XS::dict_get_int( $resp, 'status', $status ) );
-            ok( Net::GetDNS::XS::pretty_print_dict( $resp ) );
+            ok( !getdns_dict_get_int( $resp, 'status', $status ) );
+            ok( getdns_pretty_print_dict( $resp ) );
         }
     ),
     0
 );
-Net::GetDNS::XS::context_run( $ctx );
+getdns_context_run( $ctx );
 
 done_testing;
