@@ -68,32 +68,32 @@ getdns_return_t getdns_context_get_update_callback(getdns_context *context, void
 //uint32_t getdns_context_get_num_pending_requests(getdns_context* context, struct timeval* next_timeout);
 
 getdns_return_t getdns_context_set_context_update_callback( getdns_context *context, void (*value)(getdns_context *context, getdns_context_code_t changed_item) );
-getdns_return_t getdns_context_set_resolution_type(getdns_context *context, getdns_resolution_t value);
+//getdns_return_t getdns_context_set_resolution_type(getdns_context *context, getdns_resolution_t value);
 getdns_return_t getdns_context_set_namespaces(getdns_context *context, size_t namespace_count, getdns_namespace_t *namespaces);
-getdns_return_t getdns_context_set_dns_transport(getdns_context *context, getdns_transport_t value);
+//getdns_return_t getdns_context_set_dns_transport(getdns_context *context, getdns_transport_t value);
 getdns_return_t getdns_context_set_dns_transport_list(getdns_context *context, size_t transport_count, getdns_transport_list_t *transports);
-getdns_return_t getdns_context_set_idle_timeout(getdns_context *context, uint64_t timeout);
-getdns_return_t getdns_context_set_limit_outstanding_queries(getdns_context *context, uint16_t limit);
-getdns_return_t getdns_context_set_timeout(getdns_context *context, uint64_t timeout);
-getdns_return_t getdns_context_set_follow_redirects(getdns_context *context, getdns_redirects_t value);
-getdns_return_t getdns_context_set_dns_root_servers(getdns_context *context, getdns_list *addresses);
-getdns_return_t getdns_context_set_append_name(getdns_context *context, getdns_append_name_t value);
-getdns_return_t getdns_context_set_suffix(getdns_context *context, getdns_list *value);
-getdns_return_t getdns_context_set_dnssec_trust_anchors(getdns_context *context, getdns_list *value);
-getdns_return_t getdns_context_set_dnssec_allowed_skew(getdns_context *context, uint32_t value);
-getdns_return_t getdns_context_set_upstream_recursive_servers(getdns_context *context, getdns_list *upstream_list);
-getdns_return_t getdns_context_set_edns_maximum_udp_payload_size(getdns_context *context, uint16_t value);
-getdns_return_t getdns_context_set_edns_extended_rcode(getdns_context *context, uint8_t value);
-getdns_return_t getdns_context_set_edns_version(getdns_context *context, uint8_t value);
-getdns_return_t getdns_context_set_edns_do_bit(getdns_context *context, uint8_t value);
+//getdns_return_t getdns_context_set_idle_timeout(getdns_context *context, uint64_t timeout);
+//getdns_return_t getdns_context_set_limit_outstanding_queries(getdns_context *context, uint16_t limit);
+//getdns_return_t getdns_context_set_timeout(getdns_context *context, uint64_t timeout);
+//getdns_return_t getdns_context_set_follow_redirects(getdns_context *context, getdns_redirects_t value);
+//getdns_return_t getdns_context_set_dns_root_servers(getdns_context *context, getdns_list *addresses);
+//getdns_return_t getdns_context_set_append_name(getdns_context *context, getdns_append_name_t value);
+//getdns_return_t getdns_context_set_suffix(getdns_context *context, getdns_list *value);
+//getdns_return_t getdns_context_set_dnssec_trust_anchors(getdns_context *context, getdns_list *value);
+//getdns_return_t getdns_context_set_dnssec_allowed_skew(getdns_context *context, uint32_t value);
+//getdns_return_t getdns_context_set_upstream_recursive_servers(getdns_context *context, getdns_list *upstream_list);
+//getdns_return_t getdns_context_set_edns_maximum_udp_payload_size(getdns_context *context, uint16_t value);
+//getdns_return_t getdns_context_set_edns_extended_rcode(getdns_context *context, uint8_t value);
+//getdns_return_t getdns_context_set_edns_version(getdns_context *context, uint8_t value);
+//getdns_return_t getdns_context_set_edns_do_bit(getdns_context *context, uint8_t value);
 getdns_return_t getdns_context_set_memory_functions(getdns_context *context, void *(*malloc) (size_t), void *(*realloc) (void *, size_t), void (*free) (void *) );
 getdns_return_t getdns_context_set_extended_memory_functions(getdns_context *context, void *userarg, void *(*malloc) (void *userarg, size_t sz), void *(*realloc) (void *userarg, void *ptr, size_t sz), void (*free) (void *userarg, void *ptr) );
 getdns_return_t getdns_context_set_update_callback(getdns_context *context, void *userarg, void (*value) (getdns_context *, getdns_context_code_t, void *));
-getdns_return_t getdns_context_set_return_dnssec_status( getdns_context *context, int enabled);
-getdns_return_t getdns_context_set_use_threads(getdns_context* context, int use_threads);
-getdns_return_t getdns_context_set_tls_authentication( getdns_context *context, getdns_tls_authentication_t value);
-getdns_return_t getdns_context_set_edns_client_subnet_private(getdns_context *context, uint8_t value);
-getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *context, uint16_t value);
+//getdns_return_t getdns_context_set_return_dnssec_status( getdns_context *context, int enabled);
+//getdns_return_t getdns_context_set_use_threads(getdns_context* context, int use_threads);
+//getdns_return_t getdns_context_set_tls_authentication( getdns_context *context, getdns_tls_authentication_t value);
+//getdns_return_t getdns_context_set_edns_client_subnet_private(getdns_context *context, uint8_t value);
+//getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *context, uint16_t value);
 
 
 //getdns_return_t getdns_general(getdns_context *context, const char *name, uint16_t request_type, getdns_dict *extensions, void *userarg, getdns_transaction_t * transaction_id, getdns_callback_t callbackfn);
@@ -107,21 +107,21 @@ getdns_return_t getdns_context_set_tls_query_padding_blocksize(getdns_context *c
 //getdns_return_t getdns_service_sync(getdns_context *context, const char *name, getdns_dict *extensions, getdns_dict **response);
 
 
-getdns_return_t getdns_convert_dns_name_to_fqdn( const getdns_bindata *dns_name_wire_fmt, char **fqdn_as_string);
-getdns_return_t getdns_convert_fqdn_to_dns_name( const char *fqdn_as_string, getdns_bindata **dns_name_wire_fmt);
-char *getdns_convert_ulabel_to_alabel(const char *ulabel);
-char *getdns_convert_alabel_to_ulabel(const char *alabel);
-getdns_return_t getdns_validate_dnssec(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors);
-getdns_list *getdns_root_trust_anchor(time_t *utc_date_of_anchor);
+//getdns_return_t getdns_convert_dns_name_to_fqdn( const getdns_bindata *dns_name_wire_fmt, char **fqdn_as_string);
+//getdns_return_t getdns_convert_fqdn_to_dns_name( const char *fqdn_as_string, getdns_bindata **dns_name_wire_fmt);
+//char *getdns_convert_ulabel_to_alabel(const char *ulabel);
+//char *getdns_convert_alabel_to_ulabel(const char *alabel);
+//getdns_return_t getdns_validate_dnssec(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors);
+//getdns_list *getdns_root_trust_anchor(time_t *utc_date_of_anchor);
 //char *getdns_pretty_print_dict(const getdns_dict *some_dict);
-char *getdns_display_ip_address(const getdns_bindata *bindata_of_ipv4_or_ipv6_address);
+//char *getdns_display_ip_address(const getdns_bindata *bindata_of_ipv4_or_ipv6_address);
 
 
 getdns_return_t getdns_context_set_eventloop(getdns_context* context, getdns_eventloop *eventloop);
 getdns_return_t getdns_context_get_eventloop(getdns_context* context, getdns_eventloop **eventloop);
 getdns_return_t getdns_context_detach_eventloop(getdns_context *context);
 //void getdns_context_run(getdns_context *context);
-getdns_return_t getdns_context_process_async(getdns_context* context);
+//getdns_return_t getdns_context_process_async(getdns_context* context);
 
 
 //const char *getdns_get_version(void);
@@ -131,27 +131,27 @@ getdns_return_t getdns_context_process_async(getdns_context* context);
 
 
 //const char *getdns_get_errorstr_by_id(uint16_t err);
-getdns_return_t getdns_strerror(getdns_return_t err, char *buf, size_t buflen);
+//getdns_return_t getdns_strerror(getdns_return_t err, char *buf, size_t buflen);
 
 
-getdns_return_t getdns_dict_util_set_string(struct getdns_dict * dict, char *name, const char *value);
-getdns_return_t getdns_dict_util_get_string(struct getdns_dict * dict, char *name, char **result);
+//getdns_return_t getdns_dict_util_set_string(struct getdns_dict * dict, char *name, const char *value);
+//getdns_return_t getdns_dict_util_get_string(struct getdns_dict * dict, char *name, char **result);
 
 
-getdns_return_t getdns_validate_dnssec2(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors, time_t validation_time, uint32_t skew);
+//getdns_return_t getdns_validate_dnssec2(getdns_list *to_validate, getdns_list *support_records, getdns_list *trust_anchors, time_t validation_time, uint32_t skew);
 
 
-getdns_dict* getdns_pubkey_pin_create_from_string( 	getdns_context* context, 	const char* str);
-getdns_return_t getdns_pubkey_pinset_sanity_check( 	const getdns_list* pinset, 	getdns_list* errorlist);
+//getdns_dict* getdns_pubkey_pin_create_from_string( 	getdns_context* context, 	const char* str);
+//getdns_return_t getdns_pubkey_pinset_sanity_check( 	const getdns_list* pinset, 	getdns_list* errorlist);
 
 
-int getdns_pretty_snprint_dict(char *str, size_t size, const getdns_dict *dict);
-char * getdns_pretty_print_list(const getdns_list *some_list);
-int getdns_pretty_snprint_list(char *str, size_t size, const getdns_list *list);
-char * getdns_print_json_dict(const getdns_dict *some_dict, int pretty);
-int getdns_snprint_json_dict( char *str, size_t size, const getdns_dict *dict, int pretty);
-char * getdns_print_json_list(const getdns_list *some_list, int pretty);
-int getdns_snprint_json_list( char *str, size_t size, const getdns_list *list, int pretty);
+//int getdns_pretty_snprint_dict(char *str, size_t size, const getdns_dict *dict);
+//char * getdns_pretty_print_list(const getdns_list *some_list);
+//int getdns_pretty_snprint_list(char *str, size_t size, const getdns_list *list);
+//char * getdns_print_json_dict(const getdns_dict *some_dict, int pretty);
+//int getdns_snprint_json_dict( char *str, size_t size, const getdns_dict *dict, int pretty);
+//char * getdns_print_json_list(const getdns_list *some_list, int pretty);
+//int getdns_snprint_json_list( char *str, size_t size, const getdns_list *list, int pretty);
 
 
 getdns_return_t getdns_rr_dict2wire( const getdns_dict *rr_dict, uint8_t **wire, size_t *wire_sz);

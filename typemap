@@ -16,3 +16,4 @@ getdns_append_name_t T_U_SHORT
 getdns_tls_authentication_t T_U_SHORT
 getdns_transaction_t T_U_SHORT
 getdns_callback_type_t T_U_SHORT
+time_t T_U_LONG

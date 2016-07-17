@@ -160,6 +160,73 @@ CODE:
 OUTPUT:
     RETVAL
 
+char *
+getdns_pretty_print_dict(some_dict)
+    Net::GetDNS::XS::Dict * some_dict
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_dict_util_set_string(dict, name, value)
+    Net::GetDNS::XS::Dict * dict
+    char * name
+    const char * value
+PROTOTYPE: $$$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_dict_util_get_string(dict, name, result)
+    Net::GetDNS::XS::Dict * dict
+    char * name
+    char * result = NO_INIT
+PROTOTYPE: $$$
+CODE:
+    /* TODO: Check that result is not set */
+    RETVAL = getdns_dict_util_get_string(dict, name, &result);
+OUTPUT:
+    result
+    RETVAL
+
+int
+getdns_pretty_snprint_dict(str, dict)
+    SV * str
+    Net::GetDNS::XS::Dict * dict
+PROTOTYPE: $$
+CODE:
+    char buf[4096];
+    memset(buf, 0, sizeof(buf));
+    RETVAL = getdns_pretty_snprint_dict(buf, sizeof(buf)-1, dict);
+    sv_setpv_mg(str, buf);
+OUTPUT:
+    str
+    RETVAL
+
+char *
+getdns_print_json_dict(some_dict, pretty)
+    Net::GetDNS::XS::Dict * some_dict
+    int pretty
+PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+int
+getdns_snprint_json_dict(str, dict, pretty)
+    SV * str
+    Net::GetDNS::XS::Dict * dict
+    int pretty
+PROTOTYPE: $$
+CODE:
+    char buf[4096];
+    memset(buf, 0, sizeof(buf));
+    RETVAL = getdns_snprint_json_dict(buf, sizeof(buf)-1, dict, pretty);
+    sv_setpv_mg(str, buf);
+OUTPUT:
+    str
+    RETVAL
+
+
 MODULE = Net::GetDNS::XS::Dict  PACKAGE = Net::GetDNS::XS::Dict
 
 PROTOTYPES: ENABLE

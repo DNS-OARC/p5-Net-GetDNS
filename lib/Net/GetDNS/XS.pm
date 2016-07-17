@@ -95,6 +95,48 @@ BEGIN {
               getdns_general_sync
               getdns_hostname_sync
               getdns_service_sync
+              getdns_context_set_append_name
+              getdns_context_set_dns_root_servers
+              getdns_context_set_dns_transport
+              getdns_context_set_dnssec_allowed_skew
+              getdns_context_set_dnssec_trust_anchors
+              getdns_context_set_edns_client_subnet_private
+              getdns_context_set_edns_do_bit
+              getdns_context_set_edns_extended_rcode
+              getdns_context_set_edns_maximum_udp_payload_size
+              getdns_context_set_edns_version
+              getdns_context_set_follow_redirects
+              getdns_context_set_idle_timeout
+              getdns_context_set_limit_outstanding_queries
+              getdns_context_set_resolution_type
+              getdns_context_set_return_dnssec_status
+              getdns_context_set_suffix
+              getdns_context_set_timeout
+              getdns_context_set_tls_authentication
+              getdns_context_set_tls_query_padding_blocksize
+              getdns_context_set_upstream_recursive_servers
+              getdns_context_set_use_threads
+              getdns_convert_alabel_to_ulabel
+              getdns_convert_dns_name_to_fqdn
+              getdns_convert_fqdn_to_dns_name
+              getdns_convert_ulabel_to_alabel
+              getdns_display_ip_address
+              getdns_root_trust_anchor
+              getdns_validate_dnssec
+              getdns_context_process_async
+              getdns_dict_util_get_string
+              getdns_dict_util_set_string
+              getdns_pretty_print_list
+              getdns_pretty_snprint_dict
+              getdns_pretty_snprint_list
+              getdns_print_json_dict
+              getdns_print_json_list
+              getdns_pubkey_pin_create_from_string
+              getdns_pubkey_pinset_sanity_check
+              getdns_snprint_json_dict
+              getdns_snprint_json_list
+              getdns_strerror
+              getdns_validate_dnssec2
               )
         ]
     );
@@ -179,6 +221,48 @@ Please see getdns API documentation for the following functions.
 =item getdns_general_sync
 =item getdns_hostname_sync
 =item getdns_service_sync
+=item getdns_context_set_append_name
+=item getdns_context_set_dns_root_servers
+=item getdns_context_set_dns_transport
+=item getdns_context_set_dnssec_allowed_skew
+=item getdns_context_set_dnssec_trust_anchors
+=item getdns_context_set_edns_client_subnet_private
+=item getdns_context_set_edns_do_bit
+=item getdns_context_set_edns_extended_rcode
+=item getdns_context_set_edns_maximum_udp_payload_size
+=item getdns_context_set_edns_version
+=item getdns_context_set_follow_redirects
+=item getdns_context_set_idle_timeout
+=item getdns_context_set_limit_outstanding_queries
+=item getdns_context_set_resolution_type
+=item getdns_context_set_return_dnssec_status
+=item getdns_context_set_suffix
+=item getdns_context_set_timeout
+=item getdns_context_set_tls_authentication
+=item getdns_context_set_tls_query_padding_blocksize
+=item getdns_context_set_upstream_recursive_servers
+=item getdns_context_set_use_threads
+=item getdns_convert_alabel_to_ulabel
+=item getdns_convert_dns_name_to_fqdn
+=item getdns_convert_fqdn_to_dns_name
+=item getdns_convert_ulabel_to_alabel
+=item getdns_display_ip_address
+=item getdns_root_trust_anchor
+=item getdns_validate_dnssec
+=item getdns_context_process_async
+=item getdns_dict_util_get_string
+=item getdns_dict_util_set_string
+=item getdns_pretty_print_list
+=item getdns_pretty_snprint_dict
+=item getdns_pretty_snprint_list
+=item getdns_print_json_dict
+=item getdns_print_json_list
+=item getdns_pubkey_pin_create_from_string
+=item getdns_pubkey_pinset_sanity_check
+=item getdns_snprint_json_dict
+=item getdns_snprint_json_list
+=item getdns_strerror
+=item getdns_validate_dnssec2
 
 =back
 
