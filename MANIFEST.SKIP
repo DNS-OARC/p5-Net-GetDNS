@@ -20,3 +20,5 @@ getdns_list.c
 getdns_list.o
 xs_left
 compat_64bit.o
+getdns_unimpl.c
+getdns_unimpl.o
