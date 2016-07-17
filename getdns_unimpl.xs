@@ -42,18 +42,6 @@ CODE:
     croak("not implemented");
 
 void
-getdns_context_get_namespaces()
-PROTOTYPE: DISABLE
-CODE:
-    croak("not implemented");
-
-void
-getdns_context_get_dns_transport_list()
-PROTOTYPE: DISABLE
-CODE:
-    croak("not implemented");
-
-void
 getdns_context_get_update_callback()
 PROTOTYPE: DISABLE
 CODE:
@@ -61,18 +49,6 @@ CODE:
 
 void
 getdns_context_set_context_update_callback()
-PROTOTYPE: DISABLE
-CODE:
-    croak("not implemented");
-
-void
-getdns_context_set_namespaces()
-PROTOTYPE: DISABLE
-CODE:
-    croak("not implemented");
-
-void
-getdns_context_set_dns_transport_list()
 PROTOTYPE: DISABLE
 CODE:
     croak("not implemented");

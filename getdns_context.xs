@@ -332,20 +332,24 @@ CODE:
     SV ** item;
 
     if (av_len(namespaces) < 0) {
-        return GETDNS_RETURN_GENERIC_ERROR;
+        RETVAL = GETDNS_RETURN_GENERIC_ERROR;
     }
-    namespace_count = av_len(namespaces);
-    Newxz(_namespaces, namespace_count, getdns_namespace_t);
-    for (i = 0; i < namespace_count; i++) {
-        item = av_fetch(namespaces, i, 0);
-        if (!item || !*item) {
-            Safefree(_namespaces);
-            return GETDNS_RETURN_GENERIC_ERROR;
+    else {
+        namespace_count = av_len(namespaces);
+        Newxz(_namespaces, namespace_count, getdns_namespace_t);
+        RETVAL = GETDNS_RETURN_GOOD;
+        for (i = 0; i < namespace_count; i++) {
+            item = av_fetch(namespaces, i, 0);
+            if (!item || !*item) {
+                RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                break;
+            }
+            _namespaces[i] = SvUV(*item);
         }
-        _namespaces[i] = SvUV(*item);
+        if (RETVAL == GETDNS_RETURN_GOOD)
+            RETVAL = getdns_context_set_namespaces(context, namespace_count, _namespaces);
+        Safefree(_namespaces);
     }
-    RETVAL = getdns_context_set_namespaces(context, namespace_count, _namespaces);
-    Safefree(_namespaces);
 OUTPUT:
     RETVAL
 
@@ -369,20 +373,24 @@ CODE:
     SV ** item;
 
     if (av_len(transports) < 0) {
-        return GETDNS_RETURN_GENERIC_ERROR;
+        RETVAL = GETDNS_RETURN_GENERIC_ERROR;
     }
-    transport_count = av_len(transports);
-    Newxz(_transports, transport_count, getdns_transport_list_t);
-    for (i = 0; i < transport_count; i++) {
-        item = av_fetch(transports, i, 0);
-        if (!item || !*item) {
-            Safefree(_transports);
-            return GETDNS_RETURN_GENERIC_ERROR;
+    else {
+        transport_count = av_len(transports);
+        Newxz(_transports, transport_count, getdns_transport_list_t);
+        RETVAL = GETDNS_RETURN_GOOD;
+        for (i = 0; i < transport_count; i++) {
+            item = av_fetch(transports, i, 0);
+            if (!item || !*item) {
+                RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                break;
+            }
+            _transports[i] = SvUV(*item);
         }
-        _transports[i] = SvUV(*item);
+        if (RETVAL == GETDNS_RETURN_GOOD)
+            RETVAL = getdns_context_set_dns_transport_list(context, transport_count, _transports);
+        Safefree(_transports);
     }
-    RETVAL = getdns_context_set_dns_transport_list(context, transport_count, _transports);
-    Safefree(_transports);
 OUTPUT:
     RETVAL
 
