@@ -7,7 +7,7 @@ use Carp;
 
 =head1 NAME
 
-Net::GetDNS - Perl bindings for getdns, a modern asynchronous DNS API
+Net::GetDNS - A modern asynchronous DNS API
 
 =head1 VERSION
 
@@ -19,11 +19,12 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
+  use Net::GetDNS;
   ...
 
 =head1 DESCRIPTION
 
-Perl bindings for getdns, a modern asynchronous DNS API
+A modern asynchronous DNS API. See L<Net::GetDNS::XS> for Perl XS bindings.
 
 =head1 METHODS
 

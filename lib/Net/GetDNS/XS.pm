@@ -9,7 +9,7 @@ use Net::GetDNS;
 
 =head1 NAME
 
-Net::GetDNS::XS - XS layer for getdns
+Net::GetDNS::XS - Perl bindings for getdns, a modern asynchronous DNS API
 
 =head1 VERSION
 
@@ -17,6 +17,7 @@ See L<Net::GetDNS> for version.
 
 =head1 SYNOPSIS
 
+  use Net::GetDNS::XS;
   ...
 
 =cut
@@ -147,7 +148,7 @@ BEGIN {
 
 =head1 DESCRIPTION
 
-XS layer for getdns
+Perl bindings for getdns, a modern asynchronous DNS API.
 
 =head1 METHODS
 
