@@ -1,7 +1,5 @@
 #include "net_getdns.h"
 
-#include <stdio.h>
-
 
 MODULE = Net::GetDNS::XS::Bindata  PACKAGE = Net::GetDNS::XS::BindataPtr  PREFIX = getdns_bindata_
 

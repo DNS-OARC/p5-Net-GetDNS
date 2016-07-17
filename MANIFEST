@@ -1,6 +1,7 @@
 Changes
 
 lib/Net/GetDNS.pm
+lib/Net/GetDNS/XS.pm
 
 compat_64bit.c
 compat_64bit.h
@@ -30,3 +31,4 @@ t/pod.t
 t/tidy.t
 t/basic.t
 t/query.t
+t/syncquery.t
