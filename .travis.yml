@@ -1,0 +1,23 @@
+language: perl
+perl:
+  - "5.22"
+  - "5.20"
+  - "5.18"
+  - "5.16"
+  - "5.14"
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libunbound-dev libidn11-dev libssl-dev unbound-anchor build-essential
+  - curl https://getdnsapi.net/dist/getdns-1.0.0b2.tar.gz | tar zxf -
+  - ( cd getdns-1.0.0b2 && ./configure && sudo make install )
+install:
+  - cpanm --quiet --installdeps --notest .
+script:
+  - perl Makefile.PL
+  - make
+  - make dist
+  - tar zxvf *.tar.gz
+  - cd p5-Net-GetDNS-*[0-9]
+  - perl Makefile.PL
+  - make
+  - RELEASE_TESTING=1 make test

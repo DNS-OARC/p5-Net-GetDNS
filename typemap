@@ -1,0 +1,19 @@
+TYPEMAP
+Net::GetDNS::XS* T_PTROBJ
+Net::GetDNS::XS::Context* T_PTROBJ
+Net::GetDNS::XS::Dict* T_PTROBJ
+Net::GetDNS::XS::List* T_PTROBJ
+Net::GetDNS::XS::Bindata* T_PTROBJ
+uint8_t T_U_CHAR
+uint16_t T_U_SHORT
+uint32_t T_U_LONG
+getdns_return_t T_U_SHORT
+getdns_data_type T_U_SHORT
+getdns_resolution_t T_U_SHORT
+getdns_transport_t T_U_SHORT
+getdns_redirects_t T_U_SHORT
+getdns_append_name_t T_U_SHORT
+getdns_tls_authentication_t T_U_SHORT
+getdns_transaction_t T_U_SHORT
+getdns_callback_type_t T_U_SHORT
+time_t T_U_LONG

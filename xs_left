@@ -1,0 +1,81 @@
+MODULE = Net::GetDNS::XS::Context  PACKAGE = Net::GetDNS::XS::Context  PREFIX = net_getdns_xs_context_
+
+PROTOTYPES: ENABLE
+
+Net::GetDNS::XS::Context*
+net_getdns_xs_context_new(class, set_from_os)
+    const char* class
+    int set_from_os
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+
+/*
+Net::GetDNS::XS::Dict *
+getdns_dict_create_with_memory_functions( void *(*malloc) (size_t), void *(*realloc) (void *, size_t), void (*free) (void *) );
+
+Net::GetDNS::XS::Dict *
+getdns_dict_create_with_extended_memory_functions( void *userarg, void *(*malloc) (void *userarg, size_t), void *(*realloc) (void *userarg, void *, size_t), void (*free) (void *userarg, void *) );
+*/
+
+
+
+/*
+getdns_return_t
+getdns_dict_get_names(const Net::GetDNS::XS::Dict *dict, getdns_list **answer);
+
+getdns_return_t
+getdns_dict_get_data_type(const Net::GetDNS::XS::Dict *dict, const char *name, getdns_data_type * answer);
+
+getdns_return_t
+getdns_dict_get_dict(const Net::GetDNS::XS::Dict *dict, const char *name, Net::GetDNS::XS::Dict **answer);
+
+getdns_return_t
+getdns_dict_get_list(const Net::GetDNS::XS::Dict *dict, const char *name, getdns_list **answer);
+
+getdns_return_t
+getdns_dict_get_bindata(const Net::GetDNS::XS::Dict *dict, const char *name, getdns_bindata **answer);
+
+getdns_return_t
+getdns_dict_get_int(const Net::GetDNS::XS::Dict *dict, const char *name, uint32_t * answer);
+
+
+getdns_return_t
+getdns_dict_set_dict(Net::GetDNS::XS::Dict *dict, const char *name, const Net::GetDNS::XS::Dict *child_dict);
+
+getdns_return_t
+getdns_dict_set_list(Net::GetDNS::XS::Dict *dict, const char *name, const getdns_list *child_list);
+
+getdns_return_t
+getdns_dict_set_bindata(Net::GetDNS::XS::Dict *dict, const char *name, const getdns_bindata *child_bindata);
+
+getdns_return_t
+getdns_dict_set_int(Net::GetDNS::XS::Dict *dict, const char *name, uint32_t child_uint32);
+
+getdns_return_t
+getdns_dict_remove_name(Net::GetDNS::XS::Dict *dict, const char *name);
+*/
+
+
+/*
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XS  PREFIX = net_getdns_xs_
+
+PROTOTYPES: ENABLE
+
+Net::GetDNS::XS*
+net_getdns_xs_new(class)
+    const char* class
+PROTOTYPE: $
+OUTPUT:
+    RETVAL
+
+MODULE = Net::GetDNS::XS  PACKAGE = Net::GetDNS::XSPtr  PREFIX = net_getdns_xs_
+
+PROTOTYPES: ENABLE
+
+void
+net_getdns_xs_DESTROY(object)
+    Net::GetDNS::XS* object
+PROTOTYPE: $
+*/

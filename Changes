@@ -1,0 +1,15 @@
+Net::GetDNS history
+
+0.01    2016-07-17
+        Release 0.01
+
+        First release into the world at #IETF96 #IETFHackathon.
+
+        0845cf2 A lot of more functions impl
+        36f795f More is better!
+        1ad2c85 Even MORE!
+        f086167 Fix travis
+        f651f9f More
+        edb5e77 Base layout, `perl Makefile.PL && RELEASE_TESTING=1
+                TEST_AUTHOR=1 make all test` works
+        0baa3da Initial commit
