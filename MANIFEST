@@ -10,6 +10,7 @@ getdns_bindata.xs
 getdns_context.xs
 getdns_dict.xs
 getdns_list.xs
+getdns_unimpl.xs
 net_getdns.c
 net_getdns.h
 ppport.h

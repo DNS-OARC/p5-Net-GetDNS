@@ -44,9 +44,9 @@ getdns_return_t getdns_context_create_with_extended_memory_functions( getdns_con
 
 //getdns_dict* getdns_context_get_api_information(getdns_context* context);
 //getdns_return_t getdns_context_get_resolution_type(getdns_context *context, getdns_resolution_t* value);
-getdns_return_t getdns_context_get_namespaces(getdns_context *context, size_t* namespace_count, getdns_namespace_t **namespaces);
+//getdns_return_t getdns_context_get_namespaces(getdns_context *context, size_t* namespace_count, getdns_namespace_t **namespaces);
 //getdns_return_t getdns_context_get_dns_transport(getdns_context *context, getdns_transport_t* value);
-getdns_return_t getdns_context_get_dns_transport_list(getdns_context *context, size_t* transport_count, getdns_transport_list_t **transports);
+//getdns_return_t getdns_context_get_dns_transport_list(getdns_context *context, size_t* transport_count, getdns_transport_list_t **transports);
 //getdns_return_t getdns_context_get_limit_outstanding_queries(getdns_context *context, uint16_t* limit);
 //getdns_return_t getdns_context_get_timeout(getdns_context *context, uint64_t* timeout);
 //getdns_return_t getdns_context_get_idle_timeout(getdns_context *context, uint64_t* timeout);
@@ -69,9 +69,9 @@ getdns_return_t getdns_context_get_update_callback(getdns_context *context, void
 
 getdns_return_t getdns_context_set_context_update_callback( getdns_context *context, void (*value)(getdns_context *context, getdns_context_code_t changed_item) );
 //getdns_return_t getdns_context_set_resolution_type(getdns_context *context, getdns_resolution_t value);
-getdns_return_t getdns_context_set_namespaces(getdns_context *context, size_t namespace_count, getdns_namespace_t *namespaces);
+//getdns_return_t getdns_context_set_namespaces(getdns_context *context, size_t namespace_count, getdns_namespace_t *namespaces);
 //getdns_return_t getdns_context_set_dns_transport(getdns_context *context, getdns_transport_t value);
-getdns_return_t getdns_context_set_dns_transport_list(getdns_context *context, size_t transport_count, getdns_transport_list_t *transports);
+//getdns_return_t getdns_context_set_dns_transport_list(getdns_context *context, size_t transport_count, getdns_transport_list_t *transports);
 //getdns_return_t getdns_context_set_idle_timeout(getdns_context *context, uint64_t timeout);
 //getdns_return_t getdns_context_set_limit_outstanding_queries(getdns_context *context, uint16_t limit);
 //getdns_return_t getdns_context_set_timeout(getdns_context *context, uint64_t timeout);

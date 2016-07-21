@@ -1,5 +1,19 @@
 Net::GetDNS history
 
+0.02    2016-07-21
+        Release 0.02
+
+        A few more functions implemented and all the rest have been
+        implemented but will `croak()` when called.
+
+        e73ec67 Better handling of allocated memory
+        4d445a4 Can not use return in XS CODE, removed implemented unimpl
+                functions.
+        ee6acd7 A couple of more functions implemented, add missing exports
+                and DOCUMENTATION
+        3bbd86b Add binding for all unimplemented functions that will croak
+                when called
+
 0.01    2016-07-17
         Release 0.01
 

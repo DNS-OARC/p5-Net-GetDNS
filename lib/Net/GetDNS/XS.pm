@@ -15,6 +15,10 @@ Net::GetDNS::XS - Perl bindings for getdns, a modern asynchronous DNS API
 
 See L<Net::GetDNS> for version.
 
+=cut
+
+our $VERSION = $Net::GetDNS::VERSION;
+
 =head1 SYNOPSIS
 
   use Net::GetDNS::XS;
@@ -31,32 +35,76 @@ BEGIN {
         all => [
             qw(
               getdns_address
+              getdns_address_sync
+              getdns_cancel_callback
               getdns_context_create
+              getdns_context_create_with_extended_memory_functions
+              getdns_context_create_with_memory_functions
               getdns_context_destroy
+              getdns_context_detach_eventloop
               getdns_context_get_api_information
               getdns_context_get_append_name
               getdns_context_get_dns_root_servers
-              getdns_context_get_dns_transport
               getdns_context_get_dnssec_allowed_skew
               getdns_context_get_dnssec_trust_anchors
+              getdns_context_get_dns_transport
+              getdns_context_get_dns_transport_list
               getdns_context_get_edns_client_subnet_private
               getdns_context_get_edns_do_bit
               getdns_context_get_edns_extended_rcode
               getdns_context_get_edns_maximum_udp_payload_size
               getdns_context_get_edns_version
+              getdns_context_get_eventloop
               getdns_context_get_follow_redirects
               getdns_context_get_idle_timeout
               getdns_context_get_limit_outstanding_queries
+              getdns_context_get_namespaces
               getdns_context_get_num_pending_requests
               getdns_context_get_resolution_type
               getdns_context_get_suffix
               getdns_context_get_timeout
               getdns_context_get_tls_authentication
               getdns_context_get_tls_query_padding_blocksize
+              getdns_context_get_update_callback
               getdns_context_get_upstream_recursive_servers
+              getdns_context_process_async
               getdns_context_run
+              getdns_context_set_append_name
+              getdns_context_set_context_update_callback
+              getdns_context_set_dns_root_servers
+              getdns_context_set_dnssec_allowed_skew
+              getdns_context_set_dnssec_trust_anchors
+              getdns_context_set_dns_transport
+              getdns_context_set_dns_transport_list
+              getdns_context_set_edns_client_subnet_private
+              getdns_context_set_edns_do_bit
+              getdns_context_set_edns_extended_rcode
+              getdns_context_set_edns_maximum_udp_payload_size
+              getdns_context_set_edns_version
+              getdns_context_set_eventloop
+              getdns_context_set_extended_memory_functions
+              getdns_context_set_follow_redirects
+              getdns_context_set_idle_timeout
+              getdns_context_set_limit_outstanding_queries
+              getdns_context_set_memory_functions
+              getdns_context_set_namespaces
+              getdns_context_set_resolution_type
+              getdns_context_set_return_dnssec_status
+              getdns_context_set_suffix
+              getdns_context_set_timeout
+              getdns_context_set_tls_authentication
+              getdns_context_set_tls_query_padding_blocksize
+              getdns_context_set_update_callback
+              getdns_context_set_upstream_recursive_servers
+              getdns_context_set_use_threads
+              getdns_convert_alabel_to_ulabel
+              getdns_convert_dns_name_to_fqdn
+              getdns_convert_fqdn_to_dns_name
+              getdns_convert_ulabel_to_alabel
               getdns_dict_create
               getdns_dict_create_with_context
+              getdns_dict_create_with_extended_memory_functions
+              getdns_dict_create_with_memory_functions
               getdns_dict_destroy
               getdns_dict_get_bindata
               getdns_dict_get_data_type
@@ -69,11 +117,23 @@ BEGIN {
               getdns_dict_set_dict
               getdns_dict_set_int
               getdns_dict_set_list
+              getdns_dict_util_get_string
+              getdns_dict_util_set_string
+              getdns_display_ip_address
+              getdns_fp2rr_list
+              getdns_general
+              getdns_general_sync
               getdns_get_api_version
+              getdns_get_api_version_number
               getdns_get_errorstr_by_id
               getdns_get_version
+              getdns_get_version_number
+              getdns_hostname
+              getdns_hostname_sync
               getdns_list_create
               getdns_list_create_with_context
+              getdns_list_create_with_extended_memory_functions
+              getdns_list_create_with_memory_functions
               getdns_list_destroy
               getdns_list_get_bindata
               getdns_list_get_data_type
@@ -85,48 +145,13 @@ BEGIN {
               getdns_list_set_dict
               getdns_list_set_int
               getdns_list_set_list
+              getdns_msg_dict2str
+              getdns_msg_dict2str_buf
+              getdns_msg_dict2str_scan
+              getdns_msg_dict2wire
+              getdns_msg_dict2wire_buf
+              getdns_msg_dict2wire_scan
               getdns_pretty_print_dict
-              getdns_cancel_callback
-              getdns_general
-              getdns_hostname
-              getdns_service
-              getdns_get_api_version_number
-              getdns_get_version_number
-              getdns_address_sync
-              getdns_general_sync
-              getdns_hostname_sync
-              getdns_service_sync
-              getdns_context_set_append_name
-              getdns_context_set_dns_root_servers
-              getdns_context_set_dns_transport
-              getdns_context_set_dnssec_allowed_skew
-              getdns_context_set_dnssec_trust_anchors
-              getdns_context_set_edns_client_subnet_private
-              getdns_context_set_edns_do_bit
-              getdns_context_set_edns_extended_rcode
-              getdns_context_set_edns_maximum_udp_payload_size
-              getdns_context_set_edns_version
-              getdns_context_set_follow_redirects
-              getdns_context_set_idle_timeout
-              getdns_context_set_limit_outstanding_queries
-              getdns_context_set_resolution_type
-              getdns_context_set_return_dnssec_status
-              getdns_context_set_suffix
-              getdns_context_set_timeout
-              getdns_context_set_tls_authentication
-              getdns_context_set_tls_query_padding_blocksize
-              getdns_context_set_upstream_recursive_servers
-              getdns_context_set_use_threads
-              getdns_convert_alabel_to_ulabel
-              getdns_convert_dns_name_to_fqdn
-              getdns_convert_fqdn_to_dns_name
-              getdns_convert_ulabel_to_alabel
-              getdns_display_ip_address
-              getdns_root_trust_anchor
-              getdns_validate_dnssec
-              getdns_context_process_async
-              getdns_dict_util_get_string
-              getdns_dict_util_set_string
               getdns_pretty_print_list
               getdns_pretty_snprint_dict
               getdns_pretty_snprint_list
@@ -134,10 +159,27 @@ BEGIN {
               getdns_print_json_list
               getdns_pubkey_pin_create_from_string
               getdns_pubkey_pinset_sanity_check
+              getdns_root_trust_anchor
+              getdns_rr_dict2str
+              getdns_rr_dict2str_buf
+              getdns_rr_dict2str_scan
+              getdns_rr_dict2wire
+              getdns_rr_dict2wire_buf
+              getdns_rr_dict2wire_scan
+              getdns_service
+              getdns_service_sync
               getdns_snprint_json_dict
               getdns_snprint_json_list
+              getdns_str2rr_dict
               getdns_strerror
+              getdns_validate_dnssec
               getdns_validate_dnssec2
+              getdns_wire2msg_dict
+              getdns_wire2msg_dict_buf
+              getdns_wire2msg_dict_scan
+              getdns_wire2rr_dict
+              getdns_wire2rr_dict_buf
+              getdns_wire2rr_dict_scan
               )
         ]
     );
@@ -150,9 +192,60 @@ BEGIN {
 
 Perl bindings for getdns, a modern asynchronous DNS API.
 
-=head1 METHODS
+=head1 FUNCTIONS
 
-Please see getdns API documentation for the following functions.
+Functions below are bounded to Perl with a bit of magic in between and in such
+differs from getdns documentation, see each function for what differs.
+
+=over 4
+
+=item getdns_context_get_namespaces ($context, $array_ref)
+
+Will push C<getdns_namespace_t>s in to C<$array_ref>.
+
+=item getdns_context_get_dns_transport_list ($context, $array_ref)
+
+Will push C<getdns_transport_list_t>s in to C<$array_ref>.
+
+=item getdns_context_set_namespaces ($context, $array_ref)
+
+Will set the namespaces from the list of C<getdns_namespace_t>s in
+C<$array_ref>.
+
+=item getdns_context_set_dns_transport_list ($context, $array_ref)
+
+Will set the transport lists from the list of C<getdns_transport_list_t>s in
+C<$array_ref>.
+
+=item getdns_strerror ($err, $str)
+
+Will set C<$str> with the description of error C<$err>.
+
+=item getdns_context_get_num_pending_requests ($context, $timeout)
+
+Next timeout will be set in C<$timeout> in the format of C<seconds.useconds>
+from the C<struct timeval>.
+
+=item getdns_pretty_snprint_dict ($str, $dict)
+
+Will set C<$str> with the output using a static buffer of 4096 characters.
+
+=item getdns_pretty_snprint_list ($str, $list)
+
+Will set C<$str> with the output using a static buffer of 4096 characters.
+
+=item getdns_snprint_json_dict ($str, $dict)
+
+Will set C<$str> with the output using a static buffer of 4096 characters.
+
+=item getdns_snprint_json_list ($str, $list)
+
+Will set C<$str> with the output using a static buffer of 4096 characters.
+
+=back
+
+All functions below are at a 1:1 binding meaning no Perl magic is done when
+calling. Please see getdns API documentation for the following functions.
 
 =over 4
 
@@ -173,7 +266,6 @@ Please see getdns API documentation for the following functions.
 =item getdns_context_get_follow_redirects
 =item getdns_context_get_idle_timeout
 =item getdns_context_get_limit_outstanding_queries
-=item getdns_context_get_num_pending_requests
 =item getdns_context_get_resolution_type
 =item getdns_context_get_suffix
 =item getdns_context_get_timeout
@@ -254,15 +346,10 @@ Please see getdns API documentation for the following functions.
 =item getdns_dict_util_get_string
 =item getdns_dict_util_set_string
 =item getdns_pretty_print_list
-=item getdns_pretty_snprint_dict
-=item getdns_pretty_snprint_list
 =item getdns_print_json_dict
 =item getdns_print_json_list
 =item getdns_pubkey_pin_create_from_string
 =item getdns_pubkey_pinset_sanity_check
-=item getdns_snprint_json_dict
-=item getdns_snprint_json_list
-=item getdns_strerror
 =item getdns_validate_dnssec2
 
 =back
@@ -271,11 +358,11 @@ Please see getdns API documentation for the following functions.
 
 use DynaLoader;
 require XSLoader;
-XSLoader::load( 'Net::GetDNS', $Net::GetDNS::VERSION );
+XSLoader::load( 'Net::GetDNS', $VERSION );
 {
     my $libref = $DynaLoader::dl_librefs[ ( scalar @DynaLoader::dl_librefs - 1 ) ];
 
-    foreach my $module ( qw(Context Dict List Bindata) ) {
+    foreach my $module ( qw(Context Dict List Bindata Unimpl) ) {
         my ( $symref, $xs );
 
         unless ( ( $symref = DynaLoader::dl_find_symbol( $libref, 'boot_Net__GetDNS__XS__' . $module ) ) ) {
@@ -285,6 +372,49 @@ XSLoader::load( 'Net::GetDNS', $Net::GetDNS::VERSION );
         &$xs( 'Net::GetDNS::XS::' . $module );
     }
 }
+
+=head1 UNIMPLEMENTED
+
+These functions have yet been implemented.
+
+=over 4
+
+=item getdns_context_create_with_extended_memory_functions
+=item getdns_context_create_with_memory_functions
+=item getdns_context_detach_eventloop
+=item getdns_context_get_eventloop
+=item getdns_context_get_update_callback
+=item getdns_context_set_context_update_callback
+=item getdns_context_set_eventloop
+=item getdns_context_set_extended_memory_functions
+=item getdns_context_set_memory_functions
+=item getdns_context_set_update_callback
+=item getdns_dict_create_with_extended_memory_functions
+=item getdns_dict_create_with_memory_functions
+=item getdns_fp2rr_list
+=item getdns_list_create_with_extended_memory_functions
+=item getdns_list_create_with_memory_functions
+=item getdns_msg_dict2str
+=item getdns_msg_dict2str_buf
+=item getdns_msg_dict2str_scan
+=item getdns_msg_dict2wire
+=item getdns_msg_dict2wire_buf
+=item getdns_msg_dict2wire_scan
+=item getdns_rr_dict2str
+=item getdns_rr_dict2str_buf
+=item getdns_rr_dict2str_scan
+=item getdns_rr_dict2wire
+=item getdns_rr_dict2wire_buf
+=item getdns_rr_dict2wire_scan
+=item getdns_str2rr_dict
+=item getdns_wire2msg_dict
+=item getdns_wire2msg_dict_buf
+=item getdns_wire2msg_dict_scan
+=item getdns_wire2rr_dict
+=item getdns_wire2rr_dict_buf
+=item getdns_wire2rr_dict_scan
+
+=back
 
 =head1 AUTHOR
 

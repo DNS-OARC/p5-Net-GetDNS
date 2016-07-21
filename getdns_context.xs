@@ -44,6 +44,30 @@ OUTPUT:
     RETVAL
 
 getdns_return_t
+getdns_context_get_namespaces(context, namespaces)
+    Net::GetDNS::XS::Context * context
+    AV * namespaces
+PROTOTYPE: $$
+CODE:
+    size_t namespace_count = 0;
+    getdns_namespace_t * _namespaces = 0;
+
+    RETVAL = getdns_context_get_namespaces(context, &namespace_count, &_namespaces);
+    if (namespaces && !RETVAL) {
+        size_t i;
+
+        for (i = 0; i < namespace_count; i++) {
+            av_push(namespaces, newSVuv(_namespaces[i]));
+        }
+    }
+    if (_namespaces) {
+        free(_namespaces);
+    }
+OUTPUT:
+    namespaces
+    RETVAL
+
+getdns_return_t
 getdns_context_get_dns_transport(context, value)
     Net::GetDNS::XS::Context * context
     getdns_transport_t value
@@ -52,6 +76,30 @@ CODE:
     RETVAL = getdns_context_get_dns_transport(context, &value);
 OUTPUT:
     value
+    RETVAL
+
+getdns_return_t
+getdns_context_get_dns_transport_list(context, transports)
+    Net::GetDNS::XS::Context * context
+    AV * transports
+PROTOTYPE: $$
+CODE:
+    size_t transport_count = 0;
+    getdns_transport_list_t * _transports = 0;
+
+    RETVAL = getdns_context_get_dns_transport_list(context, &transport_count, &_transports);
+    if (transports && !RETVAL) {
+        size_t i;
+
+        for (i = 0; i < transport_count; i++) {
+            av_push(transports, newSVuv(_transports[i]));
+        }
+    }
+    if (_transports) {
+        free(_transports);
+    }
+OUTPUT:
+    transports
     RETVAL
 
 getdns_return_t
@@ -279,10 +327,86 @@ OUTPUT:
     RETVAL
 
 getdns_return_t
+getdns_context_set_namespaces(context, namespaces)
+    Net::GetDNS::XS::Context * context
+    AV * namespaces
+PROTOTYPE: $$
+CODE:
+    size_t namespace_count = 0;
+    getdns_namespace_t * _namespaces = 0;
+    size_t i;
+    SV ** item;
+
+    if (av_len(namespaces) < 0) {
+        RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+    }
+    else {
+        namespace_count = av_len(namespaces);
+        Newxz(_namespaces, namespace_count, getdns_namespace_t);
+        if (_namespaces) {
+            RETVAL = GETDNS_RETURN_GOOD;
+            for (i = 0; i < namespace_count; i++) {
+                item = av_fetch(namespaces, i, 0);
+                if (!item || !*item) {
+                    RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                    break;
+                }
+                _namespaces[i] = SvUV(*item);
+            }
+            if (RETVAL == GETDNS_RETURN_GOOD)
+                RETVAL = getdns_context_set_namespaces(context, namespace_count, _namespaces);
+            Safefree(_namespaces);
+        }
+        else {
+            RETVAL = GETDNS_RETURN_MEMORY_ERROR;
+        }
+    }
+OUTPUT:
+    RETVAL
+
+getdns_return_t
 getdns_context_set_dns_transport(context, value)
     Net::GetDNS::XS::Context * context
     getdns_transport_t value
 PROTOTYPE: $$
+OUTPUT:
+    RETVAL
+
+getdns_return_t
+getdns_context_set_dns_transport_list(context, transports)
+    Net::GetDNS::XS::Context * context
+    AV * transports
+PROTOTYPE: $$
+CODE:
+    size_t transport_count = 0;
+    getdns_transport_list_t * _transports = 0;
+    size_t i;
+    SV ** item;
+
+    if (av_len(transports) < 0) {
+        RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+    }
+    else {
+        transport_count = av_len(transports);
+        Newxz(_transports, transport_count, getdns_transport_list_t);
+        if (_transports) {
+            RETVAL = GETDNS_RETURN_GOOD;
+            for (i = 0; i < transport_count; i++) {
+                item = av_fetch(transports, i, 0);
+                if (!item || !*item) {
+                    RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                    break;
+                }
+                _transports[i] = SvUV(*item);
+            }
+            if (RETVAL == GETDNS_RETURN_GOOD)
+                RETVAL = getdns_context_set_dns_transport_list(context, transport_count, _transports);
+            Safefree(_transports);
+        }
+        else {
+            RETVAL = GETDNS_RETURN_MEMORY_ERROR;
+        }
+    }
 OUTPUT:
     RETVAL
 
