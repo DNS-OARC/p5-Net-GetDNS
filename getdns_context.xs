@@ -60,6 +60,9 @@ CODE:
             av_push(namespaces, newSVuv(_namespaces[i]));
         }
     }
+    if (_namespaces) {
+        free(_namespaces);
+    }
 OUTPUT:
     namespaces
     RETVAL
@@ -91,6 +94,9 @@ CODE:
         for (i = 0; i < transport_count; i++) {
             av_push(transports, newSVuv(_transports[i]));
         }
+    }
+    if (_transports) {
+        free(_transports);
     }
 OUTPUT:
     transports
@@ -337,18 +343,23 @@ CODE:
     else {
         namespace_count = av_len(namespaces);
         Newxz(_namespaces, namespace_count, getdns_namespace_t);
-        RETVAL = GETDNS_RETURN_GOOD;
-        for (i = 0; i < namespace_count; i++) {
-            item = av_fetch(namespaces, i, 0);
-            if (!item || !*item) {
-                RETVAL = GETDNS_RETURN_GENERIC_ERROR;
-                break;
+        if (_namespaces) {
+            RETVAL = GETDNS_RETURN_GOOD;
+            for (i = 0; i < namespace_count; i++) {
+                item = av_fetch(namespaces, i, 0);
+                if (!item || !*item) {
+                    RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                    break;
+                }
+                _namespaces[i] = SvUV(*item);
             }
-            _namespaces[i] = SvUV(*item);
+            if (RETVAL == GETDNS_RETURN_GOOD)
+                RETVAL = getdns_context_set_namespaces(context, namespace_count, _namespaces);
+            Safefree(_namespaces);
         }
-        if (RETVAL == GETDNS_RETURN_GOOD)
-            RETVAL = getdns_context_set_namespaces(context, namespace_count, _namespaces);
-        Safefree(_namespaces);
+        else {
+            RETVAL = GETDNS_RETURN_MEMORY_ERROR;
+        }
     }
 OUTPUT:
     RETVAL
@@ -378,18 +389,23 @@ CODE:
     else {
         transport_count = av_len(transports);
         Newxz(_transports, transport_count, getdns_transport_list_t);
-        RETVAL = GETDNS_RETURN_GOOD;
-        for (i = 0; i < transport_count; i++) {
-            item = av_fetch(transports, i, 0);
-            if (!item || !*item) {
-                RETVAL = GETDNS_RETURN_GENERIC_ERROR;
-                break;
+        if (_transports) {
+            RETVAL = GETDNS_RETURN_GOOD;
+            for (i = 0; i < transport_count; i++) {
+                item = av_fetch(transports, i, 0);
+                if (!item || !*item) {
+                    RETVAL = GETDNS_RETURN_GENERIC_ERROR;
+                    break;
+                }
+                _transports[i] = SvUV(*item);
             }
-            _transports[i] = SvUV(*item);
+            if (RETVAL == GETDNS_RETURN_GOOD)
+                RETVAL = getdns_context_set_dns_transport_list(context, transport_count, _transports);
+            Safefree(_transports);
         }
-        if (RETVAL == GETDNS_RETURN_GOOD)
-            RETVAL = getdns_context_set_dns_transport_list(context, transport_count, _transports);
-        Safefree(_transports);
+        else {
+            RETVAL = GETDNS_RETURN_MEMORY_ERROR;
+        }
     }
 OUTPUT:
     RETVAL
