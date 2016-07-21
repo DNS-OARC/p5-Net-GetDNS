@@ -15,6 +15,10 @@ Net::GetDNS::XS - Perl bindings for getdns, a modern asynchronous DNS API
 
 See L<Net::GetDNS> for version.
 
+=cut
+
+our $VERSION = $Net::GetDNS::VERSION;
+
 =head1 SYNOPSIS
 
   use Net::GetDNS::XS;
@@ -354,7 +358,7 @@ calling. Please see getdns API documentation for the following functions.
 
 use DynaLoader;
 require XSLoader;
-XSLoader::load( 'Net::GetDNS', $Net::GetDNS::VERSION );
+XSLoader::load( 'Net::GetDNS', $VERSION );
 {
     my $libref = $DynaLoader::dl_librefs[ ( scalar @DynaLoader::dl_librefs - 1 ) ];
 
