@@ -1,3 +1,5 @@
+## DISCONTINUED: This project has been discontinued and will not receive any future updates or bug fixes.
+
 # p5-Net-GetDNS
 
 Perl bindings for getdns, a modern asynchronous DNS API
